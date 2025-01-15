@@ -10,7 +10,7 @@ class $modify(HookedEditorPauseLayer, EditorPauseLayer) {
     #ifndef GEODE_IS_MACOS
     void onExitEditor(cocos2d::CCObject* sender);
     #else
-    FLAlert_Clicked(FLAlertLayer* p0, bool btnTwo);
+    void FLAlert_Clicked(FLAlertLayer* p0, bool btnTwo);
     #endif
     void onSaveAndPlay(cocos2d::CCObject* sender);
 };
