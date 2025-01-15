@@ -166,7 +166,7 @@ void AudioManager::populateAudioSourceInfo(std::shared_ptr<AudioSource> source) 
     FMOD_TAG albumCoverTag;
     if (source->m_path.extension().string() == ".mp3") {
         FMOD_RESULT albumRes = sound->getTag("APIC", 0, &albumCoverTag);
-        if (albumRes != FMOD_ERR_TAGNOTFOUND) populateAlbumCover(source, albumCoverTag);
+        if (albumRes != FMOD_ERR_TAGNOTFOUND || !Mod::get()->getSettingValue<bool>("skip-album-cover")) populateAlbumCover(source, albumCoverTag);
     }
 
 	sound->getLength(&source->m_length, FMOD_TIMEUNIT_MS);
