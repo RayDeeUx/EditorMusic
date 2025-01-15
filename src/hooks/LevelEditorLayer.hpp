@@ -1,4 +1,4 @@
-#ifndef GEODE_IS_MACOS
+#ifdef GEODE_IS_WINDOWS
 #include <Geode/Geode.hpp>
 #include <Geode/modify/LevelEditorLayer.hpp>
 
