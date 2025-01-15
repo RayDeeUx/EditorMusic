@@ -15,11 +15,21 @@ void HookedEditorPauseLayer::onExitEditor(cocos2d::CCObject* sender) {
     EditorPauseLayer::onExitEditor(sender);
 }
 
+#ifndef GEODE_IS_MACOS
 void HookedEditorPauseLayer::onSaveAndExit(cocos2d::CCObject* sender) {
     em::log::info("Exited editor, onSaveAndExit");
     AudioManager::get().exitEditor();
     EditorPauseLayer::onSaveAndExit(sender);
 }
+#else
+void HookedEditorPauseLayer::FLAlert_Clicked(FLAlertLayer* p0, bool btnTwo) {
+    if (p0->getTag() == 1) {
+        AudioManager::get().exitEditor();
+        em::log::info("Exited editor, FLAlert_Clicked with sender tag 1");
+    }
+    EditorPauseLayer::FLAlert_Clicked(p0, btnTwo);
+}
+#endif
 
 void HookedEditorPauseLayer::onSaveAndPlay(cocos2d::CCObject* sender) {
     em::log::info("Exited editor, onSaveAndPlay");
